@@ -18,7 +18,9 @@ pipeline{
             }
         }
         stage('Maven version') {
-            sh 'mvn --version'
+            steps{
+                sh 'mvn --version'
+            }
         }
     }
     post{
