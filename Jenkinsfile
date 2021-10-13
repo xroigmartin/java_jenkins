@@ -1,9 +1,9 @@
 pipeline{
     agent any
     stages{
-        stage("A"){
+        stage("checkout"){
             steps{
-                echo "========executing A========"
+                checkout scm
             }
             post{
                 always{
