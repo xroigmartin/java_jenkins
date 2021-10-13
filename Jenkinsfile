@@ -1,5 +1,9 @@
 pipeline{
     agent any
+    tools{
+        maven 'maven-3.8.2'
+        jdk 'JDK11'
+    }
     stages{
         stage("checkout"){
             steps{
@@ -17,21 +21,16 @@ pipeline{
                 }
             }
         }
-        stage('Maven version') {
+        stage('Initialize') {
+            sh ''' 
+                echo "PATH = ${PATH}"
+                echo "M2_HOME = ${M2_HOME}
+             '''
+        }
+        stage('Build') {
             steps{
-                sh 'mvn --version'
+                echo 'This is a minimal pipeline'
             }
-        }
-    }
-    post{
-        always{
-            echo "========always========"
-        }
-        success{
-            echo "========pipeline executed successfully ========"
-        }
-        failure{
-            echo "========pipeline execution failed========"
         }
     }
 }
